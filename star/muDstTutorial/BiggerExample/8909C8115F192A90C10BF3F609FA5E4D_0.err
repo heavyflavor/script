@@ -1,0 +1,14 @@
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name PrimaryVertices does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name CovGlobTrack does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name CovPrimTrack does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name pp2pp does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name mtd does not exist
+Error in <TClass::BuildRealData>: Cannot find any ShowMembers function for StV0I!
+Error in <TClass::BuildRealData>: Cannot find any ShowMembers function for StXiI!
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name StMuMcVertex does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name StMuMcTrack does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name FmsHit does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name TofRawData does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name BTofHit does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name BTofRawHit does not exist
+Warning in <StMuDstMaker::setBranchAddresses>: Branch name BTofHeader does not exist

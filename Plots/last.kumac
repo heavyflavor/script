@@ -1,0 +1,8 @@
+*** Begin of history file: Sun Mar 22 23:00:21 2015
+make sim/gstar
+gprint part
+.q
+ls
+ls
+q
+*** End   of history file: Sun Mar 22 23:01:29 2015

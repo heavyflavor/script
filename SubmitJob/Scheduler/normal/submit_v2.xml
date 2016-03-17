@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job maxFilesPerProcess="5" filesPerHour="10" fileListSyntax="paths" simulateSubmission="false">
+<command>
+starver SL15c
+root4star -q -b -l StRoot/macros/readPicoDst.C\(\"$FILELIST\"\,\"$JOBID.v0tree.root\"\) &gt;&amp;$JOBID.log
+</command>
+<!--
+ln -s /gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/.sl64_gcc447/ ./
+ln -s /gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/StRoot/ ./
+-->
+<stderr URL="file:./Log/$JOBID.err" />
+<stdout URL="file:./Log/$JOBID.out" />
+<Generator>
+  <Location>/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/report/</Location>
+  <ScriptLocation>/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/csh/</ScriptLocation>
+  <ListLocation>/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/list/</ListLocation>
+</Generator>
+<input URL="filelist:/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/pico.list"/>
+
+<SandBox installer="ZIP">
+  <Package name="LocalLibraries">
+    <File>file: /gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/.sl64_gcc447/</File>
+    <File>file: /gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/StRoot/</File>
+  </Package>
+</SandBox>
+
+<!--
+<output fromScratch="*.root" toURL="file:/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/out/" />
+<output fromScratch="*.log" toURL="file:/gpfs/mnt/gpfs01/star/pwg/zhoulong/Run14/Dstar/log/" />
+-->
+
+<output fromScratch="*.root" toURL="file:/gpfs/mnt/gpfs01/star/scratch/zhoulong/Run14/Dstar/out/" />
+<output fromScratch="*.log" toURL="file:/gpfs/mnt/gpfs01/star/scratch/zhoulong/Run14/Dstar/log/" />
+</job>

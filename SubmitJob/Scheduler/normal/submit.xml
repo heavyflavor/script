@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job maxFilesPerProcess="1" filesPerHour="1" fileListSyntax="paths" simulateSubmission="false">
+<command>
+starver SL14g
+root4star -q -b -l StRoot/macros/readPicoDst.C\(\"$FILELIST\"\,\"$FILEBASENAME.ed.root\"\) &gt;&amp;${FILEBASENAME}.log
+</command>
+<!--
+ln -s /star/u/zhoulong/Run13/eDmeson/.sl64_gcc447/ ./
+ln -s /star/u/zhoulong/Run13/eDmeson/StRoot/ ./
+-->
+<stderr URL="file:./Log/shed$FILEBASENAME.err" />
+<stdout URL="file:./Log/shed$FILEBASENAME.out" />
+<Generator>
+  <Location>/star/u/zhoulong/Run13/eDmeson/report/</Location>
+  <ScriptLocation>/star/u/zhoulong/Run13/eDmeson/csh/</ScriptLocation>
+  <ListLocation>/star/u/zhoulong/Run13/eDmeson/list/</ListLocation>
+</Generator>
+<input URL="filelist:/star/u/zhoulong/Run13/eDmeson/dstar.list"/>
+
+<SandBox installer="ZIP">
+  <Package name="LocalLibraries">
+    <File>file: /star/u/zhoulong/Run13/eDmeson/.sl64_gcc447/</File>
+    <File>file: /star/u/zhoulong/Run13/eDmeson/StRoot/</File>
+  </Package>
+</SandBox>
+
+<output fromScratch="*.root" toURL="file:/gpfs01/star/pwg/zhoulong/Run13/eDmeson/out/" />
+<output fromScratch="*.log" toURL="file:/gpfs01/star/pwg/zhoulong/Run13/eDmeson/log/" />
+</job>

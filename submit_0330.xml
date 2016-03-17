@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job maxFilesPerProcess="1" filesPerHour="1" fileListSyntax="paths" simulateSubmission="false">
+<command>
+starver DEV
+ln -s /star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/StRoot .
+ln -s /star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/StarDb .
+ln -s /star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/.sl64_gcc447 .
+root4star -q -b -l bfc.C\(&start;,&stop;,\"P2014a,mtd,btof,BEmcChkStat,Corr4,OSpaceZ2,OGridLeak3D,-hitfilt,pxlRaw,pxlDb,pxlCluster,pxlHit,istRaw,istDb,istCluster,istHit,pixelIT,istIT,StiPulls,HftMatTree\",\"$INPUTFILE0\"\)
+</command>
+    <stdout URL="file:/star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/output/&runnumber;/&start;/$FILEBASENAME.out" />
+    <stderr URL="file:/star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/output/&runnumber;/&start;/$FILEBASENAME.err" />
+    <input URL="filelist:/star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/daq/&runnumber;.lis" />
+    <output fromScratch="*.root" toURL="file:/star/institutions/lbl_prod/dongx/hft/Run14/AuAu200/Tracking/output/&runnumber;/&start;/" />
+</job>

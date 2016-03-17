@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<job  name="TpcRS" maxFilesPerProcess="1"  filesPerHour="0.2" simulateSubmission="false" fileListSyntax="paths">
+<stdout URL="file:/star/data01/pwg/xyf/itpc/Geant_simulation/info/$JOBID.log" />
+<stderr URL="file:/star/data01/pwg/xyf/itpc/Geant_simulation/info/$JOBID.err" />
+<command> 
+#  source ~/.tcshrc
+source /afs/rhic.bnl.gov/star/packages/.DEV2/setupDEV2.csh
+  cd ${SUBMITTINGDIRECTORY}  
+#  setenv NODEBUG yes
+#  starver .DEV2 
+#  setup gcc451
+  set file = `basename $INPUTFILE0 .nt`;
+# if (! -r $file) ln -s $INPUTFILE0 $file;
+  set set = `echo $file | sed -e 's/evgen.//'`
+  set energy = 200
+  set tag = devTE
+  set base = AuAu200
+  set nevents = 50
+#  echo "starsim -w 0 -b runHijingEvents set=${set} energy=${energy} nevents=${nevents} tag=${tag} base=${base}"  &gt; ${set}B.log
+  starsim -w 0 -b runHijingEvents set=${set} energy=${energy} nevents=${nevents} tag=${tag} base=${base}  &gt;&amp; ${set}B.log
+</command>
+
+<input URL="file:/star/data01/pwg/xyf/itpc/Hijing_generation/*.nt" />
+<!-- input URL="file:/star/data01/pwg/xyf/itpc/Geant_simulation/*.nt" / -->
+
+<Generator><Location>./info</Location></Generator>
+</job>

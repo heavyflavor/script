@@ -1,0 +1,15 @@
+Universe       = vanilla
+Notification        = never
+Executable     = /star/u/jlzhang/muDstTutorial/BiggerExample/sched8909C8115F192A90C10BF3F609FA5E4D_0.csh
+Output         = ./8909C8115F192A90C10BF3F609FA5E4D_0.out
+Error          = ./8909C8115F192A90C10BF3F609FA5E4D_0.err
+Requirements   = (CPU_Experiment == "star")
+Log            = /star/u/jlzhang/muDstTutorial/BiggerExample/sched8909C8115F192A90C10BF3F609FA5E4D_0.condor.log
+Initialdir     = /star/u/jlzhang/muDstTutorial/BiggerExample
++Experiment     = "star"
++Job_Type       = "cas"
+kill_sig        = SIGINT
+PeriodicRemove  = (NumJobStarts >=1 && JobStatus==1) || (JobStatus == 2 && (CurrentTime - JobCurrentStartDate > (54000)) && ((RemoteUserCpu+RemoteSysCpu)/(CurrentTime-JobCurrentStartDate) < 0.10)) || (((CurrentTime - EnteredCurrentStatus) > (2*24*3600)) && JobStatus == 5) || (JobRunCount >= 1 && JobStatus == 1)
+Priority        = +10
+Queue
+

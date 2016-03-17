@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<job maxFilesPerProcess="1" filesPerHour="1" fileListSyntax="paths" simulateSubmission="false">
+  <command>
+    starver DEV
+    root4star -q -b -l bfc.C\(0,10000,\"ry2015,in,tpcX,AgML,tpcDB,TpcHitMover,Idst,Tree,evout,ITTF,UseXgeom,BAna,l3onl,trgd,StiHftC,analysis,pxlHit,istHit,sst_daq,spt,CorrX,HftMatTree\",\"$INPUTFILE0\"\) &gt;&amp;${FILEBASENAME}.log
+  </command>
+
+  <stdout URL="file:/star/u/zhoulong/data02/DEV14/SST/HotChipMask/log/&runnumber;/$FILEBASENAME.out" />
+  <stderr URL="file:/star/u/zhoulong/data02/DEV14/SST/HotChipMask/log/&runnumber;/$FILEBASENAME.err" />
+
+  <Generator>
+    <Location>/star/u/zhoulong/data02/DEV14/SST/HotChipMask/report/</Location>
+    <ScriptLocation>/star/u/zhoulong/data02/DEV14/SST/HotChipMask/csh/</ScriptLocation>
+    <ListLocation>/star/u/zhoulong/data02/DEV14/SST/HotChipMask/list/</ListLocation>
+  </Generator>
+
+  <input URL="filelist:/star/u/zhoulong/data02/DEV14/SST/HotChipMask/daq/&runnumber;.lis" />
+
+  <SandBox installer="ZIP">
+    <Package name="LocalLibraries">
+      <File>file: /star/u/zhoulong/data02/DEV14/SST/HotChipMask/.sl64_gcc447/</File>
+      <File>file: /star/u/zhoulong/data02/DEV14/SST/HotChipMask/StDb/</File>
+      <File>file: /star/u/zhoulong/data02/DEV14/SST/HotChipMask/StarDb/</File>
+      <File>file: /star/u/zhoulong/data02/DEV14/SST/HotChipMask/StRoot/</File>
+    </Package>
+  </SandBox>
+
+  <output fromScratch="*.root" toURL="file:/star/u/zhoulong/data02/DEV14/SST/HotChipMask/output/&runnumber;/" />
+  <output fromScratch="*.log" toURL="file:/star/u/zhoulong/data02/DEV14/SST/HotChipMask/log/&runnumber;/" />
+</job>

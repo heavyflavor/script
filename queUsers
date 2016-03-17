@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+
+my %table =();
+my %running =();
+
+$inList = `qstat`;
+@inListExp = split(/\n/,$inList);
+foreach $line (@inListExp)
+{
+	($jid, $pri, $script, $user, $stat, $date, $time,$njobs) = 
+	   split(/\s+/,$line);
+
+	$table{$user}=$table{$user}+1;
+	if ( $stat eq "r")
+	{
+	   $running{$user} = $running{$user}+1;
+	}	
+}
+
+print "User:      \t Total Jobs \tRunning\n";
+
+my $totalJobs=0;
+my $totalRunning=0;
+for $key ( keys  %table )
+{
+
+    #Two keys show up that shouldn't:
+	if( $key eq "user" ) {next;}
+	if( $key eq "" ) {next;}
+
+    #Print status
+	print " $key    \t $table{$key} \t";
+	$totalJobs=$totalJobs+$table{$key};
+	if( $running{$key} != 0 )
+	{	
+		print "\t $running{$key}";
+		$totalRunning=$totalRunning+$running{$key};
+	}
+	print"\n";
+}
+
+print "\n Total:\t\t $totalJobs \t\t $totalRunning\n";

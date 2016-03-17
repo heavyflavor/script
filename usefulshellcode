@@ -1,0 +1,115 @@
+1>  ls -al | sed -n '1,10p'
+  means only list first 10 items
+
+2> gerp -ri "keywords" filename
+  means find "keyword" in filename,this code also used to find a keywords in a dir.
+
+3> wc -l filename
+ display the line number of this file
+
+4> split -l 500 filename filename_dau
+ means split filename with 500 line to each filename_dau.
+
+5>ls -lrht
+
+6>du -h
+
+7>top -n 5
+
+8>condor_q zhoulong
+
+9>condor_rm zhoulong
+
+10>qusers
+
+11>qstat -u zhoulong
+
+12>qdel zhoulong
+
+13> cd -
+means return(diff with cd ..,cd .. means return to up dir,not retun)  
+
+14>ls -F | grep /
+only display folder's name , not all the file and folder ! very good !
+
+15>ls -l | grep "^d"
+only display floder's name
+
+16>ls -l -R ./
+list "all" the folder and file ,include the file in subdirectory 
+
+17>setup ROOT 5.22.00 
+means to set up ROOT version to 5.22.00
+
+18>root-config --version
+means to display this system's root version 
+
+19>qsh
+thsi command just used in PDSF,it is means submite a job with interactive way ..,when you want hadd you root file ,but maybe used more than one hour ,then ,you can use this command ,and hadd you root file .
+
+20>sgeusers
+used to check jobs status At PDSF(qsub system)
+
+21>condor_q -global [username]
+this command used to check users jobs in all the node(condor system),for example at RCF,  
+
+22>gcc readrec.c -o readrec
+this command will used to compile the .c file use gcc. 
+
+23>~fisyak/bin/cppcheck -enable=all Convert.cxx
+this command will used to check my code,Yuri recommand! 
+
+24>perl /common/nsg/bin/getIOlimits.pl
+this script used to check the IO limits...only for pdsf
+
+25>sgeusers -i | grep zhoulong
+this command used to check my jobs IO info.(only for pdsf)
+
+26>rm -f ^2*
+this command used to remove those file name is not start with 2
+
+27>echo $shell
+this command used to show shell version
+
+28>ls -F --color=none | grep / | xargs -I aaa basename aaa /
+this command can used to grab directory name. command "xargs" is very powerful.
+
+29>du -h --max-depth=1
+this command used to check each directory occupation space. --max-depth=1 :means just look at first layer. if you want to look at other layer, you can change this argument.
+
+30>awk -F '/' '{print $3;}' runlist   
+   or cat runlist | xargs -L 1 basename
+those two command used to grab filename in a file list 
+
+31>ls offline_02_24/151110*/* | grep "pedestal" | awk -F '/' '{print $3}' >> runlist
+used to found pedestal file and grab filename.
+
+32>sed -i '/^$/d' runlist
+means delete all void line.
+
+33>sed -i '/\//d' runlist
+means delete lines which include "/". (used to remove lines which include directory name)
+
+34>find Run14/ -maxdepth 1 -user zhoulong -type d -print
+find directory belong to long zhou , but only in find it in fisrt layer 
+
+35>ls st_p* | awk -F '_' '{print $3;}' | xargs -I aaaa mkdir 174/aaaa
+use daq file name to create directory . 
+
+36>ls -F --color=none | grep / | grep -ri "st_" | awk -F '/' '{print $1}' | xargs -L 1 rm -rf
+delete directory with name start with "st_"
+
+37>setup 64b
+used to setup system to 64 bits.(only used in RCF)
+
+38>du -h --max-depth=1 | sort
+look at the first level directory size .
+
+39>l.
+display all hide file and directory .
+
+40> diff -c new.list runnum.list | grep -ri "+" | awk '{print $2}' | xargs -I aaa sed -i '/aaa/d' pedlist
+find different and remove it from the list
+
+41 > awk -F '_' '{a[$3]++} END{for(i in a){print i,a[i] | "sort -r -k 2"}}' pedlist
+count the number of third value and sort

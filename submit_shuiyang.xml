@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"  ?>
+<job maxFilesPerProcess="10" fileListSyntax="xrootd">
+	<command>
+		<!-- cp -r /star/u/syang/data01/mtd/run12/pp200/makeTree/StRoot ./
+		cp -r /star/u/syang/data01/mtd/run12/pp200/makeTree/.sl64_gcc447 ./
+		cp /star/u/syang/data01/mtd/run12/pp200/makeTree/doEvent_muDst.C ./ -->
+		set mainDir = /star/u/syang/data01/mtd/run12/pp200/makeTree
+		cd ${mainDir}
+		starver SL12d 
+		<!-- ln -s ${mainDir}/.sl64_gcc447 ./
+		ln -s ${mainDir}/StRoot ./
+		ln -s ${mainDir}/doEvent_muDst.C ./ -->
+		root4star -q -b ./doEvent_muDst.C\(100000000,\"$FILELIST\",\"dbon\",\"$SCRATCH/mtd_$JOBID.root\"\)
+	</command>
+		<stdout URL="file:/star/u/syang/data01/mtd/run12/pp200/makeTree/submitjob/stdout/$JOBID.out"/>
+		<stderr URL="file:/star/u/syang/data01/mtd/run12/pp200/makeTree/submitjob/stdout/$JOBID.err"/>
+        <Generator><Location>./submit_info</Location></Generator>
+		<!-- <input URL="catalog:star.data01.gov?storage=local,filetype=daq_reco_MuDst,filename~st_mtd,production=P12id,trgsetupname=pp200_production_2012,tpx=1,sanity=1" nFiles="all" /> --> 
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/0.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/1.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/2.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/3.list" /> 
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/4.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/5.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/6.list" />
+		<input URL="filelist:/star/u/syang/data01/mtd/run12/pp200/makeTree/1000filesperlist/7.list" />
+		<output fromScratch="*.root" toURL="file:/star/u/syang/data05/run12/pp200/" />
+</job>
