@@ -1,0 +1,2 @@
+# script
+my daily script 
